@@ -6,6 +6,7 @@ export const productRouter = Router()
 const productController = new ProductController()
 
 productRouter.get('/', productController.index)
+
 productRouter.get(
   '/:id',
   celebrate({
@@ -15,6 +16,7 @@ productRouter.get(
   }),
   productController.show
 )
+
 productRouter.post(
   '/',
   celebrate({
@@ -26,6 +28,7 @@ productRouter.post(
   }),
   productController.create
 )
+
 productRouter.put(
   '/:id',
   celebrate({
@@ -40,6 +43,7 @@ productRouter.put(
   }),
   productController.update
 )
+
 productRouter.delete(
   '/:id',
   celebrate({
