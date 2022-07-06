@@ -13,6 +13,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^18.0.1",
     "@types/pg": "^8.6.5",
     "@types/reflect-metadata": "^0.1.0",
@@ -37,6 +38,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.7"
