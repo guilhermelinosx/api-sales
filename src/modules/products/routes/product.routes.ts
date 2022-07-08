@@ -36,9 +36,9 @@ productRouter.put(
       id: Joi.string().uuid().required(),
     },
     [Segments.BODY]: {
-      name: Joi.string(),
-      price: Joi.number().precision(2),
-      quantity: Joi.number(),
+      name: Joi.string().optional(),
+      price: Joi.number().precision(2).optional(),
+      quantity: Joi.number().optional(),
     },
   }),
   productController.update

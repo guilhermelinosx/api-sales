@@ -45,8 +45,8 @@ export class EtherealMail {
 
     const message = await transporter.sendMail({
       from: {
-        name: from?.name || 'Equipe API Vendas',
-        address: from?.email || 'equipe@apivendas.com.br',
+        name: from?.name || 'Team ApiSales',
+        address: from?.email || 'team@apisales.com',
       },
       to: {
         name: to.name,
