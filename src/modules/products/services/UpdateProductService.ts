@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
 import { Product } from '@shared/typeorm/entities/Product'
-import { ProductRepository } from '@shared/typeorm/repositories/ProductRepository'
+import { ProductsRepository } from '@shared/typeorm/repositories/ProductsRepository'
 
 interface IRequest {
   id: string
@@ -16,14 +16,14 @@ export class UpdateProductService {
     price,
     quantity,
   }: IRequest): Promise<Product> {
-    const productRepository = ProductRepository
+    const productsRepository = ProductsRepository
 
-    const product = await productRepository.findOneBy({ id })
+    const product = await productsRepository.findById(id)
     if (!product) {
       throw new AppError('Product not found.')
     }
 
-    const productExists = await productRepository.findByName(name)
+    const productExists = await productsRepository.findByName(name)
     if (productExists && name === product.name) {
       throw new AppError('There is already one product with this name.')
     }
@@ -32,7 +32,7 @@ export class UpdateProductService {
     product.price = price
     product.quantity = quantity
 
-    await productRepository.save(product)
+    await productsRepository.save(product)
     return product
   }
 }

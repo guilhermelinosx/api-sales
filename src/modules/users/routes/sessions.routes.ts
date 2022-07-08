@@ -4,10 +4,10 @@ import { celebrate, Joi, Segments } from 'celebrate'
 
 import { SessionController } from '../controllers/SessionController'
 
-export const sessionRouter = Router()
+export const sessionsRouter = Router()
 const sessionController = new SessionController()
 
-sessionRouter.post(
+sessionsRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {

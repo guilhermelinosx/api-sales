@@ -1,11 +1,10 @@
 import { User } from '@shared/typeorm/entities/User'
-import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
+import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
 
 export class ListUserService {
   public async execute(): Promise<User[]> {
-    const userRepository = UserRepository
-
-    const user = userRepository.find()
+    const usersRepository = UsersRepository
+    const user = usersRepository.find()
     return user
   }
 }

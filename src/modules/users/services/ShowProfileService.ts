@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
 import { User } from '@shared/typeorm/entities/User'
-import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
+import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
 
 interface IRequest {
   id: string
@@ -8,9 +8,9 @@ interface IRequest {
 
 export class ShowProfileService {
   public async execute({ id }: IRequest): Promise<User> {
-    const userRepository = UserRepository
+    const usersRepository = UsersRepository
 
-    const user = await userRepository.findOneBy({ id })
+    const user = await usersRepository.findById(id)
     if (!user) {
       throw new AppError('User not found')
     }

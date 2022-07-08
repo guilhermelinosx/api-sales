@@ -1,7 +1,7 @@
 import { compare } from 'bcryptjs'
 import { AppError } from '@shared/errors/AppError'
 import { User } from '@shared/typeorm/entities/User'
-import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
+import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
 import { sign } from 'jsonwebtoken'
 
 interface IRequest {
@@ -16,9 +16,9 @@ interface IResponse {
 
 export class CreateSessionService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
-    const userRepository = UserRepository
+    const usersRepository = UsersRepository
 
-    const user = await userRepository.findByEmail(email)
+    const user = await usersRepository.findByEmail(email)
     if (!user) {
       throw new AppError('Incorrect email/password combination.', 401)
     }

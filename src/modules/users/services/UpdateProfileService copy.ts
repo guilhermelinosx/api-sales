@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
 import { User } from '@shared/typeorm/entities/User'
-import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
+import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
 import { hash, compare } from 'bcryptjs'
 
 interface IRequest {
@@ -19,14 +19,14 @@ export class UpdateProfileService {
     newPassword,
     oldPassword,
   }: IRequest): Promise<User> {
-    const userRepository = UserRepository
+    const usersRepository = UsersRepository
 
-    const user = await userRepository.findOneBy({ id })
+    const user = await usersRepository.findById(id)
     if (!user) {
       throw new AppError('User not found')
     }
 
-    const userUpdateEmail = await userRepository.findByEmail(email)
+    const userUpdateEmail = await usersRepository.findByEmail(email)
     if (userUpdateEmail && userUpdateEmail.id !== id) {
       throw new AppError('There is already one user with this email.')
     }
@@ -46,7 +46,7 @@ export class UpdateProfileService {
     user.name = name
     user.email = email
 
-    await userRepository.save(user)
+    await usersRepository.save(user)
 
     return user
   }

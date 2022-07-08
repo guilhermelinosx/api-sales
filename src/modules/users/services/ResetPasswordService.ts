@@ -1,8 +1,8 @@
 import { isAfter, addHours } from 'date-fns'
 import { hash } from 'bcryptjs'
 import { AppError } from '@shared/errors/AppError'
-import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
-import { UserTokenRepository } from '@shared/typeorm/repositories/UserTokenRepository'
+import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@shared/typeorm/repositories/UserTokensRepository'
 
 interface IRequest {
   password: string
@@ -11,21 +11,20 @@ interface IRequest {
 
 export class ResetPasswordService {
   public async execute({ token, password }: IRequest): Promise<void> {
-    const userRepository = UserRepository
-    const userTokenRepository = UserTokenRepository
+    const usersRepository = UsersRepository
+    const userTokensRepository = UserTokensRepository
 
-    const userToken = await userTokenRepository.findByToken(token)
-    if (!userToken) {
+    const userTokens = await userTokensRepository.findByToken(token)
+    if (!userTokens) {
       throw new AppError('User does not exists.')
     }
-    const id = userToken.user_id
 
-    const user = await userRepository.findOneBy({ id })
+    const user = await usersRepository.findById(userTokens.user_id)
     if (!user) {
       throw new AppError('User does not exists.')
     }
 
-    const tokenCreatedAt = userToken.created_at
+    const tokenCreatedAt = userTokens.created_at
     const compareDate = addHours(tokenCreatedAt, 2)
     if (isAfter(Date.now(), compareDate)) {
       throw new AppError('Token expired')
@@ -33,6 +32,6 @@ export class ResetPasswordService {
 
     user.password = await hash(password, 8)
 
-    await userRepository.save(user)
+    await usersRepository.save(user)
   }
 }

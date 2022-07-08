@@ -7,6 +7,8 @@ import { UserToken } from './entities/UserToken'
 import { CreateProduct1657066844889 } from './migrations/1657066844889-CreateProduct'
 import { CreateUser1657101689653 } from './migrations/1657101689653-CreateUser'
 import { CreateUserTokens1657150924432 } from './migrations/1657150924432-CreateUserTokens'
+import { CreateCustomers1657318221887 } from './migrations/1657318221887-CreateCustomers'
+import { Customer } from './entities/Customer'
 
 export const datasource = new DataSource({
   type: 'postgres',
@@ -20,6 +22,7 @@ export const datasource = new DataSource({
     CreateProduct1657066844889,
     CreateUser1657101689653,
     CreateUserTokens1657150924432,
+    CreateCustomers1657318221887,
   ],
-  entities: [Product, User, UserToken],
+  entities: [Product, User, UserToken, Customer],
 })

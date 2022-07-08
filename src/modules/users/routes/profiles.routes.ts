@@ -3,11 +3,11 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import { isAuthenticated } from '@shared/middlewares/isAuthenticated'
 import { ProfileController } from '../controllers/ProfileController'
 
-export const profileRouter = Router()
+export const profilesRouter = Router()
 const profileController = new ProfileController()
-profileRouter.use(isAuthenticated)
+profilesRouter.use(isAuthenticated)
 
-profileRouter.get(
+profilesRouter.get(
   '/:id',
   celebrate({
     [Segments.PARAMS]: {
@@ -17,7 +17,7 @@ profileRouter.get(
   profileController.show
 )
 
-profileRouter.put(
+profilesRouter.put(
   '/:id',
   celebrate({
     [Segments.PARAMS]: {

@@ -1,11 +1,10 @@
 import { Product } from '@shared/typeorm/entities/Product'
-import { ProductRepository } from '@shared/typeorm/repositories/ProductRepository'
+import { ProductsRepository } from '@shared/typeorm/repositories/ProductsRepository'
 
 export class ListProductService {
   public async execute(): Promise<Product[]> {
-    const productRepository = ProductRepository
-
-    const product = await productRepository.find()
+    const productsRepository = ProductsRepository
+    const product = await productsRepository.find()
     return product
   }
 }

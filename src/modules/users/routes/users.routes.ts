@@ -3,12 +3,12 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import { UserController } from '../controllers/UserController'
 import { isAuthenticated } from '@shared/middlewares/isAuthenticated'
 
-export const userRouter = Router()
+export const usersRouter = Router()
 const userController = new UserController()
 
-userRouter.get('/', isAuthenticated, userController.index)
+usersRouter.get('/', isAuthenticated, userController.index)
 
-userRouter.post(
+usersRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
