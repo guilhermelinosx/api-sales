@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AppError } from '@shared/errors/AppError'
 import { UserRepository } from '@shared/typeorm/repositories/UserRepository'
 import { UserTokenRepository } from '@shared/typeorm/repositories/UserTokenRepository'
+import { EtherealMail } from '@config/mail/EtherealMail'
+import path from 'path'
 
 interface IRequest {
   email: string
@@ -17,7 +18,28 @@ export class SendForgotPasswordEmailService {
       throw new AppError('User does not exists.')
     }
 
-    const token = await userTokenRepository.generate(user.id)
-    console.log(token)
+    const { token } = await userTokenRepository.generate(user.id)
+
+    const forgotPasswordTemplate = path.resolve(
+      __dirname,
+      '..',
+      'view',
+      'forgot_password.hbs'
+    )
+
+    await EtherealMail.sendMail({
+      to: {
+        name: user.name,
+        email: user.email,
+      },
+      subject: '[ApiSales] Recuperação de Senha',
+      templateData: {
+        file: forgotPasswordTemplate,
+        variables: {
+          name: user.name,
+          link: `http://localhost:3000/reset_password?token=${token}`,
+        },
+      },
+    })
   }
 }

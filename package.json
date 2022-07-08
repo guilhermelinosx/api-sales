@@ -16,6 +16,7 @@
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^18.0.1",
+    "@types/nodemailer": "^6.4.4",
     "@types/pg": "^8.6.5",
     "@types/reflect-metadata": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
@@ -40,7 +41,9 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
+    "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.7",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.7"

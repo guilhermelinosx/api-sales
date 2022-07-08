@@ -22,6 +22,6 @@
     ],
     "rules": {
         "prettier/prettier": "warn",
-        "no-console": "warn"
+        "no-console": "off"
     }
 }
