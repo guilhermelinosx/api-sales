@@ -7,6 +7,7 @@ import { sessionsRouter } from '@modules/users/routes/sessions.routes'
 import { passwordsRouter } from '@modules/users/routes/passwords.routes'
 import { profilesRouter } from '@modules/users/routes/profiles.routes'
 import { customersRouter } from '@modules/customers/routes/customers.routes'
+import { ordersRouter } from '@modules/orders/routes/orders.routes'
 export const router = Router()
 
 router.use('/products', productsRouter)
@@ -15,3 +16,4 @@ router.use('/sessions', sessionsRouter)
 router.use('/password', passwordsRouter)
 router.use('/profile', profilesRouter)
 router.use('/customers', customersRouter)
+router.use('/orders', ordersRouter)
