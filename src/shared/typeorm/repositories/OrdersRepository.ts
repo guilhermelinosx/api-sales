@@ -17,7 +17,7 @@ export const OrdersRepository = datasource.getRepository(Order).extend({
   async findById(id: string): Promise<Order | null> {
     const order = await this.findOne({
       where: { id },
-      relations: ['orders_products', 'customers'],
+      relations: ['order_products', 'customer'],
     })
 
     return order

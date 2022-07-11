@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import {
-  Column,
   CreateDateColumn,
   Entity,
   JoinColumn,

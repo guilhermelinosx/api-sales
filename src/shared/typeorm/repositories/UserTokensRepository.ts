@@ -8,8 +8,8 @@ export const UserTokensRepository = datasource.getRepository(UserToken).extend({
     return userTokens
   },
 
-  async generate(id: string): Promise<UserToken> {
-    const userTokens = this.create({ id })
+  async generate(user_id: string): Promise<UserToken> {
+    const userTokens = this.create({ user_id })
     await this.save(userTokens)
     return userTokens
   },
