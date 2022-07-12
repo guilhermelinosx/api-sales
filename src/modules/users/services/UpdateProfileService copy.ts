@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
-import { User } from '@shared/typeorm/entities/User'
-import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
+import { User } from '@modules/users/infra/typeorm/entities/User'
+import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
 import { hash, compare } from 'bcryptjs'
 
 interface IRequest {

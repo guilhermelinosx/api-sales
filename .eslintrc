@@ -21,7 +21,9 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": "warn",
-        "no-console": "off"
-    }
+        "prettier/prettier": "error",
+        "no-useless-constructor":"off"
+        }
+
+
 }

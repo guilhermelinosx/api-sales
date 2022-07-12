@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable camelcase */
+import { CustomersRepository } from '@modules/customers/infra/typeorm/repositories/CustomersRepository'
+import { ProductsRepository } from '@modules/products/infra/typeorm/repositories/ProductsRepository'
 import { AppError } from '@shared/errors/AppError'
-import { Order } from '@shared/typeorm/entities/Order'
-import { CustomersRepository } from '@shared/typeorm/repositories/CustomersRepository'
-import { OrdersRepository } from '@shared/typeorm/repositories/OrdersRepository'
-import { ProductsRepository } from '@shared/typeorm/repositories/ProductsRepository'
+import { Order } from '../infra/typeorm/entities/Order'
+import { OrdersRepository } from '../infra/typeorm/repositories/OrdersRepository'
 
+/* eslint-disable camelcase */
 interface IProduct {
   id: string
   quantity: string
@@ -67,13 +66,15 @@ export class CreateOrderService {
 
     const { order_products } = order
 
-    const updatedProductsQuantity = order_products.map(product => ({
-      id: product.product_id,
-      quantity: Number(
-        productsExists.filter(p => p.id === product.product_id)[0].quantity -
-          product.quantity
-      ),
-    }))
+    const updatedProductsQuantity = order_products.map(
+      (product: { product_id: string; quantity: number }) => ({
+        id: product.product_id,
+        quantity: Number(
+          productsExists.filter(p => p.id === product.product_id)[0].quantity -
+            product.quantity
+        ),
+      })
+    )
 
     await productsRepository.save(updatedProductsQuantity)
 

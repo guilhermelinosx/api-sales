@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
-import { UserTokensRepository } from '@shared/typeorm/repositories/UserTokensRepository'
+import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository'
 import { EtherealMail } from '@config/mail/EtherealMail'
 import path from 'path'
 

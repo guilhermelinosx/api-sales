@@ -1,8 +1,8 @@
 import { isAfter, addHours } from 'date-fns'
 import { hash } from 'bcryptjs'
 import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@shared/typeorm/repositories/UsersRepository'
-import { UserTokensRepository } from '@shared/typeorm/repositories/UserTokensRepository'
+import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository'
 
 interface IRequest {
   password: string

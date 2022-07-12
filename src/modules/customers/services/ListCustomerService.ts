@@ -1,10 +1,16 @@
-import { Customer } from '@shared/typeorm/entities/Customer'
-import { CustomersRepository } from '@shared/typeorm/repositories/CustomersRepository'
+import { ICustomer } from '../domain/models/ICustomer'
+import { ICustomersRepository } from '../domain/repositories/ICustomersRepository'
+import { injectable, inject } from 'tsyringe'
 
+@injectable()
 export class ListCustomerService {
-  public async execute(): Promise<Customer[]> {
-    const customersRepository = CustomersRepository
-    const customer = await customersRepository.find()
+  constructor(
+    @inject('CustomersRepository')
+    private customersRepository: ICustomersRepository,
+  ) {}
+
+  public async execute(): Promise<ICustomer[]> {
+    const customer = await this.customersRepository.find()
     return customer
   }
 }

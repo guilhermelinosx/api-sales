@@ -1,5 +1,5 @@
-import { AppError } from '@shared/errors/AppError'
-import { ProductsRepository } from '@shared/typeorm/repositories/ProductsRepository'
+import { AppError } from "@shared/errors/AppError"
+import { ProductsRepository } from "../infra/typeorm/repositories/ProductsRepository"
 
 interface IRequest {
   id: string

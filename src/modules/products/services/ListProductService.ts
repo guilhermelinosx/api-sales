@@ -1,5 +1,5 @@
-import { Product } from '@shared/typeorm/entities/Product'
-import { ProductsRepository } from '@shared/typeorm/repositories/ProductsRepository'
+import { Product } from '../infra/typeorm/entities/Product'
+import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository'
 
 export class ListProductService {
   public async execute(): Promise<Product[]> {
