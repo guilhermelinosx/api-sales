@@ -4,7 +4,7 @@ import { User } from '@modules/users/infra/typeorm/entities/User'
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
 import { sign } from 'jsonwebtoken'
 
-interface IRequest {
+interface ICreateSession {
   email: string
   password: string
 }
@@ -15,7 +15,10 @@ interface IResponse {
 }
 
 export class CreateSessionService {
-  public async execute({ email, password }: IRequest): Promise<IResponse> {
+  public async execute({
+    email,
+    password,
+  }: ICreateSession): Promise<IResponse> {
     const usersRepository = UsersRepository
 
     const user = await usersRepository.findByEmail(email)

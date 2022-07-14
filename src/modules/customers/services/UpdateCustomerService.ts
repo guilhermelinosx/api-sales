@@ -1,8 +1,13 @@
 import { AppError } from '@shared/errors/AppError'
 import { ICustomer } from '../domain/models/ICustomer'
-import { IUpdateCustomer } from '../domain/models/IUpdateCustomer'
 import { injectable, inject } from 'tsyringe'
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository'
+
+export interface IUpdateCustomer {
+  id: string
+  name: string
+  email: string
+}
 
 @injectable()
 export class UpdateCustomerService {

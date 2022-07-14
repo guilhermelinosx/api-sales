@@ -1,7 +1,10 @@
 import { AppError } from '@shared/errors/AppError'
 import { injectable, inject } from 'tsyringe'
-import { IDeleteCustomer } from '../domain/models/IDeleteCustomer'
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository'
+
+export interface IDeleteCustomer {
+  id: string
+}
 
 @injectable()
 export class DeleteCustomerService {

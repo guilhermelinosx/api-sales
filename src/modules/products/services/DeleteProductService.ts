@@ -1,12 +1,12 @@
-import { AppError } from "@shared/errors/AppError"
-import { ProductsRepository } from "../infra/typeorm/repositories/ProductsRepository"
+import { AppError } from '@shared/errors/AppError'
+import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository'
 
-interface IRequest {
+interface IDeleteProduct {
   id: string
 }
 
 export class DeleteProductService {
-  public async execute({ id }: IRequest): Promise<void> {
+  public async execute({ id }: IDeleteProduct): Promise<void> {
     const productsRepository = ProductsRepository
 
     const product = await productsRepository.findById(id)

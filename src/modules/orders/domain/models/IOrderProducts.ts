@@ -1,10 +1,10 @@
-import { Order } from "@modules/orders/infra/typeorm/entities/Order"
-import { Product } from "@modules/products/infra/typeorm/entities/Product"
+import { IProduct } from '@modules/products/domain/models/IProduct'
+import { IOrder } from './IOrder'
 
 export interface IOrderProducts {
   id: string
-  order: Order
-  product: Product
+  order: IOrder
+  product: IProduct
   order_id: string
   product_id: string
   price: number

@@ -1,13 +1,13 @@
 import { AppError } from '@shared/errors/AppError'
-import { User } from '@modules/users/infra/typeorm/entities/User'
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { IUser } from '../domain/models/IUser'
 
-interface IRequest {
+interface IShowProfile {
   id: string
 }
 
 export class ShowProfileService {
-  public async execute({ id }: IRequest): Promise<User> {
+  public async execute({ id }: IShowProfile): Promise<IUser> {
     const usersRepository = UsersRepository
 
     const user = await usersRepository.findById(id)

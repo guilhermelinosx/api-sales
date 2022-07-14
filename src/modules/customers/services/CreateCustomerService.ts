@@ -1,8 +1,12 @@
 import { AppError } from '@shared/errors/AppError'
-import { ICreateCustomer } from '../domain/models/ICreateCustomer'
 import { ICustomer } from '../domain/models/ICustomer'
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository'
 import { injectable, inject } from 'tsyringe'
+
+export interface ICreateCustomer {
+  name: string
+  email: string
+}
 
 @injectable()
 export class CreateCustomerService {

@@ -2,10 +2,6 @@ import { datasource } from '@shared/infra/typeorm'
 import { In } from 'typeorm'
 import { Product } from '../entities/Product'
 
-interface IFindProducts {
-  id: string
-}
-
 export const ProductsRepository = datasource.getRepository(Product).extend({
   async findById(id: string): Promise<Product | null> {
     const products = await this.findOneBy({ id })
@@ -17,7 +13,7 @@ export const ProductsRepository = datasource.getRepository(Product).extend({
     return products
   },
 
-  async findByAllByIds(products: IFindProducts[]): Promise<Product[]> {
+  async findByAllByIds(products: { id: string }[]): Promise<Product[]> {
     const productsIds = products.map(products => products.id)
 
     const productsExists = await this.find({

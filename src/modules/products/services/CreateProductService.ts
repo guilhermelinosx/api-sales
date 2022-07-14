@@ -1,15 +1,19 @@
+import { IProduct } from '@modules/products/domain/models/IProduct'
 import { AppError } from '@shared/errors/AppError'
-import { Product } from '@shared/infra/typeorm/entities/Product'
-import { ProductsRepository } from '@shared/infra/typeorm/repositories/ProductsRepository'
+import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository'
 
-interface IRequest {
+interface ICreateProduct {
   name: string
   price: number
   quantity: number
 }
 
 export class CreateProductService {
-  public async execute({ name, price, quantity }: IRequest): Promise<Product> {
+  public async execute({
+    name,
+    price,
+    quantity,
+  }: ICreateProduct): Promise<IProduct> {
     const productsRepository = ProductsRepository
 
     const productExists = await productsRepository.findByName(name)

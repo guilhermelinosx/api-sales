@@ -1,8 +1,8 @@
+import { IProduct } from '@modules/products/domain/models/IProduct'
 import { AppError } from '@shared/errors/AppError'
-import { Product } from '../infra/typeorm/entities/Product'
 import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository'
 
-interface IRequest {
+interface IUpdateProduct {
   id: string
   name: string
   price: number
@@ -15,7 +15,7 @@ export class UpdateProductService {
     name,
     price,
     quantity,
-  }: IRequest): Promise<Product> {
+  }: IUpdateProduct): Promise<IProduct> {
     const productsRepository = ProductsRepository
 
     const product = await productsRepository.findById(id)

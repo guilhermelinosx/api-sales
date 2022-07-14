@@ -4,13 +4,13 @@ import { AppError } from '@shared/errors/AppError'
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
 import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository'
 
-interface IRequest {
+interface IResetPassword {
   password: string
   token: string
 }
 
 export class ResetPasswordService {
-  public async execute({ token, password }: IRequest): Promise<void> {
+  public async execute({ token, password }: IResetPassword): Promise<void> {
     const usersRepository = UsersRepository
     const userTokensRepository = UserTokensRepository
 

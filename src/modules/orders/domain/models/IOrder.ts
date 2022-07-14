@@ -1,14 +1,10 @@
-import { Customer } from "@modules/customers/infra/typeorm/entities/Customer"
-import { OrderProducts } from "@modules/orders/infra/typeorm/entities/OrderProducts"
+import { ICustomer } from '@modules/customers/domain/models/ICustomer'
+import { IOrderProducts } from './IOrderProducts'
 
 export interface IOrder {
   id: string
-  customer: Customer
-  order_products: OrderProducts[]
+  customer: ICustomer
+  order_products: IOrderProducts[]
   created_at: Date
   updated_at: Date
 }
-
-
-
-

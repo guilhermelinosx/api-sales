@@ -1,12 +1,7 @@
 import { Customer } from '@modules/customers/infra/typeorm/entities/Customer'
+import { IProduct } from '@modules/products/domain/models/IProduct'
 import { datasource } from '@shared/infra/typeorm'
 import { Order } from '../entities/Order'
-
-interface IProduct {
-  product_id: string
-  price: number
-  quantity: number
-}
 
 interface IRequest {
   customer: Customer

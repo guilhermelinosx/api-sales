@@ -1,9 +1,9 @@
+import { IUser } from './../domain/models/IUser'
 import { AppError } from '@shared/errors/AppError'
-import { User } from '@modules/users/infra/typeorm/entities/User'
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
 import { hash, compare } from 'bcryptjs'
 
-interface IRequest {
+interface IUpdateProfile {
   id: string
   name: string
   email: string
@@ -18,7 +18,7 @@ export class UpdateProfileService {
     email,
     newPassword,
     oldPassword,
-  }: IRequest): Promise<User> {
+  }: IUpdateProfile): Promise<IUser> {
     const usersRepository = UsersRepository
 
     const user = await usersRepository.findById(id)

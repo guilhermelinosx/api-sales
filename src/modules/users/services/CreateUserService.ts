@@ -1,16 +1,16 @@
 import { hash } from 'bcryptjs'
 import { AppError } from '@shared/errors/AppError'
-import { User } from '@modules/users/infra/typeorm/entities/User'
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { IUser } from '../domain/models/IUser'
 
-interface IRequest {
+interface ICreateUser {
   name: string
   email: string
   password: string
 }
 
 export class CreateUserService {
-  public async execute({ name, email, password }: IRequest): Promise<User> {
+  public async execute({ name, email, password }: ICreateUser): Promise<IUser> {
     const usersRepository = UsersRepository
 
     const emailExists = await usersRepository.findByEmail(email)

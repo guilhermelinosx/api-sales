@@ -1,4 +1,4 @@
-import { ICreateCustomer } from '../models/ICreateCustomer'
+import { ICreateCustomer } from '@modules/customers/services/CreateCustomerService'
 import { ICustomer } from '../models/ICustomer'
 
 export interface ICustomersRepository {

@@ -1,13 +1,13 @@
 import { AppError } from '@shared/errors/AppError'
-import { Order } from '../infra/typeorm/entities/Order'
+import { IOrder } from '../domain/models/IOrder'
 import { OrdersRepository } from '../infra/typeorm/repositories/OrdersRepository'
 
-interface IRequest {
+interface IShowOrder {
   id: string
 }
 
 export class ShowOrderService {
-  public async execute({ id }: IRequest): Promise<Order | null> {
+  public async execute({ id }: IShowOrder): Promise<IOrder | null> {
     const ordersRepository = OrdersRepository
     const order = ordersRepository.findById(id)
 

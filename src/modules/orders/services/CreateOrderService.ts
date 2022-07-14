@@ -1,22 +1,21 @@
 import { CustomersRepository } from '@modules/customers/infra/typeorm/repositories/CustomersRepository'
 import { ProductsRepository } from '@modules/products/infra/typeorm/repositories/ProductsRepository'
 import { AppError } from '@shared/errors/AppError'
-import { Order } from '../infra/typeorm/entities/Order'
+import { IOrder } from '../domain/models/IOrder'
 import { OrdersRepository } from '../infra/typeorm/repositories/OrdersRepository'
 
 /* eslint-disable camelcase */
-interface IProduct {
-  id: string
-  quantity: string
-}
 
-interface IRequest {
+interface ICreateOrder {
   customer_id: string
-  products: IProduct[]
+  products: { id: string; quantity: string }[]
 }
 
 export class CreateOrderService {
-  public async execute({ customer_id, products }: IRequest): Promise<Order> {
+  public async execute({
+    customer_id,
+    products,
+  }: ICreateOrder): Promise<IOrder> {
     const ordersRepository = OrdersRepository
     const customersRepository = CustomersRepository
     const productsRepository = ProductsRepository
@@ -34,22 +33,22 @@ export class CreateOrderService {
     const productsExistsIds = productsExists.map(product => product.id)
 
     const checkInexistentProducts = products.filter(
-      product => !productsExistsIds.includes(product.id)
+      product => !productsExistsIds.includes(product.id),
     )
     if (checkInexistentProducts.length) {
       throw new AppError(
-        `Could not find products ${checkInexistentProducts[0].id}.`
+        `Could not find products ${checkInexistentProducts[0].id}.`,
       )
     }
 
     const quantityAvailable = products.filter(
       product =>
         productsExists.filter(p => p.id === product.id)[0].quantity <
-        Number(product.quantity)
+        Number(product.quantity),
     )
     if (quantityAvailable.length) {
       throw new AppError(
-        `the quantity ${quantityAvailable[0].quantity} is not available for ${quantityAvailable[0].id}.`
+        `the quantity ${quantityAvailable[0].quantity} is not available for ${quantityAvailable[0].id}.`,
       )
     }
 
@@ -71,9 +70,9 @@ export class CreateOrderService {
         id: product.product_id,
         quantity: Number(
           productsExists.filter(p => p.id === product.product_id)[0].quantity -
-            product.quantity
+            product.quantity,
         ),
-      })
+      }),
     )
 
     await productsRepository.save(updatedProductsQuantity)

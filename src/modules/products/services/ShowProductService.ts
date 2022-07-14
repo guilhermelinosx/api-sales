@@ -1,13 +1,13 @@
+import { IProduct } from '@modules/products/domain/models/IProduct'
 import { AppError } from '@shared/errors/AppError'
-import { Product } from '../infra/typeorm/entities/Product'
 import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository'
 
-interface IRequest {
+interface IShowProduct {
   id: string
 }
 
 export class ShowProductService {
-  public async execute({ id }: IRequest): Promise<Product> {
+  public async execute({ id }: IShowProduct): Promise<IProduct> {
     const productsRepository = ProductsRepository
 
     const product = await productsRepository.findById(id)

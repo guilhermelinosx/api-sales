@@ -4,12 +4,12 @@ import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/
 import { EtherealMail } from '@config/mail/EtherealMail'
 import path from 'path'
 
-interface IRequest {
+interface ISendForgot {
   email: string
 }
 
 export class SendForgotPasswordEmailService {
-  public async execute({ email }: IRequest): Promise<void> {
+  public async execute({ email }: ISendForgot): Promise<void> {
     const usersRepository = UsersRepository
     const userTokensRepository = UserTokensRepository
 
@@ -24,7 +24,7 @@ export class SendForgotPasswordEmailService {
       __dirname,
       '..',
       'views',
-      'forgot_password.hbs'
+      'forgot_password.hbs',
     )
 
     await EtherealMail.sendMail({
