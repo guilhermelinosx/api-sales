@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev  -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "start": "ts-node-dev  -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {
@@ -52,7 +53,6 @@
     "pg": "^8.7.3",
     "redis": "^4.2.0",
     "reflect-metadata": "^0.1.13",
-    "tsyringe": "^4.7.0",
     "typeorm": "^0.3.7"
   }
 }

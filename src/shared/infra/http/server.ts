@@ -1,13 +1,11 @@
 import 'reflect-metadata'
 import 'dotenv/config'
 import 'express-async-errors'
-import '@shared/container'
 import { routes } from '@shared/infra/http/routes/index'
 import { datasource } from '@shared/infra/typeorm'
 import { errors } from 'celebrate'
 import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
-
 import { AppError } from '@shared/errors/AppError'
 
 export const app = express()

@@ -9,16 +9,13 @@ interface ICreateSession {
   password: string
 }
 
-interface IResponse {
+interface IReturn {
   user: User
   token: string
 }
 
 export class CreateSessionService {
-  public async execute({
-    email,
-    password,
-  }: ICreateSession): Promise<IResponse> {
+  public async execute({ email, password }: ICreateSession): Promise<IReturn> {
     const usersRepository = UsersRepository
 
     const user = await usersRepository.findByEmail(email)
