@@ -1,16 +1,9 @@
-import { CustomersRepository } from '@modules/customers/infra/typeorm/repositories/CustomersRepository'
-import { ProductsRepository } from '@modules/products/infra/typeorm/repositories/ProductsRepository'
-import { AppError } from '@shared/errors/AppError'
+import { AppError } from '@src/infra/errors/AppError'
+import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
+import { OrdersRepository } from '@src/infra/typeorm/repositories/OrdersRepository'
+import { ProductsRepository } from '@src/infra/typeorm/repositories/ProductsRepository'
+import { ICreateOrder } from '../domain/interfaces/ICreateOrder'
 import { IOrder } from '../domain/models/IOrder'
-import { OrdersRepository } from '../infra/typeorm/repositories/OrdersRepository'
-import '../../products/domain/models/IProduct'
-
-/* eslint-disable camelcase */
-
-interface ICreateOrder {
-	customer_id: string
-	products: { id: string; quantity: number; price: number }[]
-}
 
 export class CreateOrderService {
 	public async execute({
@@ -31,7 +24,9 @@ export class CreateOrderService {
 			throw new AppError('Could not find any products with the given ids.')
 		}
 
-		const productsExistsIds = productsExists.map(product => product.id)
+		const productsExistsIds = productsExists.map(
+			(product: { id: any }) => product.id
+		)
 
 		const checkInexistentProducts = products.filter(
 			product => !productsExistsIds.includes(product.id)
@@ -44,8 +39,8 @@ export class CreateOrderService {
 
 		const quantityAvailable = products.filter(
 			product =>
-				productsExists.filter(p => p.id === product.id)[0].quantity <
-				Number(product.quantity)
+				productsExists.filter((p: { id: string }) => p.id === product.id)[0]
+					.quantity < Number(product.quantity)
 		)
 		if (quantityAvailable.length) {
 			throw new AppError(
@@ -56,7 +51,9 @@ export class CreateOrderService {
 		const serializedProducts = products.map(product => ({
 			product_id: product.id,
 			quantity: Number(product.quantity),
-			price: productsExists.filter(p => p.id === product.id)[0].price
+			price: productsExists.filter(
+				(p: { id: string }) => p.id === product.id
+			)[0].price
 		}))
 
 		const order = await ordersRepository.createOrder({
@@ -70,8 +67,9 @@ export class CreateOrderService {
 			(product: { product_id: string; quantity: number }) => ({
 				id: product.product_id,
 				quantity: Number(
-					productsExists.filter(p => p.id === product.product_id)[0].quantity -
-						product.quantity
+					productsExists.filter(
+						(p: { id: string }) => p.id === product.product_id
+					)[0].quantity - product.quantity
 				)
 			})
 		)

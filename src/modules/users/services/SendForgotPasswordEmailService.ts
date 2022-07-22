@@ -1,12 +1,8 @@
-import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
-import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository'
-import { EtherealMail } from '@config/mail/EtherealMail'
+import { AppError } from '@src/infra/errors/AppError'
+import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@src/infra/typeorm/repositories/UserTokensRepository'
 import path from 'path'
-
-interface ISendForgot {
-	email: string
-}
+import { ISendForgot } from '../domain/interfaces/IShowProfile'
 
 export class SendForgotPasswordEmailService {
 	public async execute({ email }: ISendForgot): Promise<void> {

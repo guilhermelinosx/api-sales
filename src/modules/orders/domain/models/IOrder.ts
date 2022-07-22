@@ -1,4 +1,4 @@
-import { ICustomer } from '@modules/customers/domain/models/ICustomer'
+import { ICustomer } from '@src/modules/customers/domain/models/ICustomer'
 import { IOrderProducts } from './IOrderProducts'
 
 export interface IOrder {

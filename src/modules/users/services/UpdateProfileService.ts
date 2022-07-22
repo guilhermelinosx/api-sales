@@ -1,15 +1,8 @@
-import { IUser } from './../domain/models/IUser'
-import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { IUser } from '../domain/models/IUser'
 import { hash, compare } from 'bcryptjs'
-
-interface IUpdateProfile {
-	id: string
-	name: string
-	email: string
-	newPassword?: string
-	oldPassword?: string
-}
+import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
+import { AppError } from '@src/infra/errors/AppError'
+import { IUpdateProfile } from '../domain/interfaces/IUpdateProfile'
 
 export class UpdateProfileService {
 	public async execute({

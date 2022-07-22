@@ -1,11 +1,7 @@
-import { AppError } from '@shared/errors/AppError'
+import { AppError } from '@src/infra/errors/AppError'
+import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
+import { ICreateCustomer } from '../domain/interfaces/ICreateCustomer'
 import { ICustomer } from '../domain/models/ICustomer'
-import { CustomersRepository } from '../infra/typeorm/repositories/CustomersRepository'
-
-export interface ICreateCustomer {
-	name: string
-	email: string
-}
 
 export class CreateCustomerService {
 	public async execute({ name, email }: ICreateCustomer): Promise<ICustomer> {

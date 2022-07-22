@@ -1,13 +1,8 @@
+import { AppError } from '@src/infra/errors/AppError'
+import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
 import { hash } from 'bcryptjs'
-import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { ICreateUser } from '../domain/interfaces/ICreateUser'
 import { IUser } from '../domain/models/IUser'
-
-interface ICreateUser {
-	name: string
-	email: string
-	password: string
-}
 
 export class CreateUserService {
 	public async execute({ name, email, password }: ICreateUser): Promise<IUser> {

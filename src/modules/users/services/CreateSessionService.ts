@@ -1,13 +1,9 @@
+import { AppError } from '@src/infra/errors/AppError'
 import { compare } from 'bcryptjs'
-import { AppError } from '@shared/errors/AppError'
-import { User } from '@modules/users/infra/typeorm/entities/User'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
 import { sign } from 'jsonwebtoken'
-
-interface ICreateSession {
-	email: string
-	password: string
-}
+import { User } from '../../../infra/typeorm/entities/User'
+import { UsersRepository } from '../../../infra/typeorm/repositories/UsersRepository'
+import { ICreateSession } from '../domain/interfaces/ICreateSession'
 
 interface IReturn {
 	user: User

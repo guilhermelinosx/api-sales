@@ -1,13 +1,9 @@
 import { isAfter, addHours } from 'date-fns'
 import { hash } from 'bcryptjs'
-import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
-import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository'
-
-interface IResetPassword {
-	password: string
-	token: string
-}
+import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@src/infra/typeorm/repositories/UserTokensRepository'
+import { AppError } from '@src/infra/errors/AppError'
+import { IResetPassword } from '../domain/interfaces/IResetPassword'
 
 export class ResetPasswordService {
 	public async execute({ token, password }: IResetPassword): Promise<void> {

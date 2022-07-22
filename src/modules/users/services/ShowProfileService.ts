@@ -1,5 +1,5 @@
-import { AppError } from '@shared/errors/AppError'
-import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository'
+import { AppError } from '@src/infra/errors/AppError'
+import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
 import { IUser } from '../domain/models/IUser'
 
 interface IShowProfile {

@@ -1,12 +1,7 @@
-import { AppError } from '@shared/errors/AppError'
+import { AppError } from '@src/infra/errors/AppError'
+import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
+import { IUpdateCustomer } from '../domain/interfaces/IUpdateCustomer'
 import { ICustomer } from '../domain/models/ICustomer'
-import { CustomersRepository } from '../infra/typeorm/repositories/CustomersRepository'
-
-export interface IUpdateCustomer {
-	id: string
-	name: string
-	email: string
-}
 
 export class UpdateCustomerService {
 	public async execute({

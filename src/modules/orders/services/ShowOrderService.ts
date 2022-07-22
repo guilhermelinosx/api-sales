@@ -1,10 +1,7 @@
-import { AppError } from '@shared/errors/AppError'
+import { AppError } from '@src/infra/errors/AppError'
+import { OrdersRepository } from '@src/infra/typeorm/repositories/OrdersRepository'
+import { IShowOrder } from '../domain/interfaces/IShowOrder'
 import { IOrder } from '../domain/models/IOrder'
-import { OrdersRepository } from '../infra/typeorm/repositories/OrdersRepository'
-
-interface IShowOrder {
-	id: string
-}
 
 export class ShowOrderService {
 	public async execute({ id }: IShowOrder): Promise<IOrder | null> {

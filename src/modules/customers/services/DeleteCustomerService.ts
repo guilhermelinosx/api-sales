@@ -1,9 +1,6 @@
-import { AppError } from '@shared/errors/AppError'
-import { CustomersRepository } from '../infra/typeorm/repositories/CustomersRepository'
-
-export interface IDeleteCustomer {
-	id: string
-}
+import { AppError } from '@src/infra/errors/AppError'
+import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
+import { IDeleteCustomer } from '../domain/interfaces/IDeleteCustomer'
 
 export class DeleteCustomerService {
 	public async execute({ id }: IDeleteCustomer): Promise<void> {

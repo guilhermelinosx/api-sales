@@ -1,5 +1,5 @@
+import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
 import { ICustomer } from '../domain/models/ICustomer'
-import { CustomersRepository } from '../infra/typeorm/repositories/CustomersRepository'
 
 export class ListCustomerService {
 	public async execute(): Promise<ICustomer[]> {
