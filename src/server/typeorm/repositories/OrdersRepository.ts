@@ -1,11 +1,18 @@
+import { IProduct } from '@src/modules/products/domain/models/IProduct'
 import { datasource } from '..'
 import { Customer } from '../entities/Customer'
 import { Order } from '../entities/Order'
+import { OrderProducts } from '../entities/OrderProducts'
 import { Product } from '../entities/Product'
 
 interface IRequest {
 	customer: Customer
-	products: Product[]
+	products: {
+		product_id: string
+		quantity: number
+		price: number
+		order_products?: OrderProducts[]
+	}[]
 }
 
 export const OrdersRepository = datasource.getRepository(Order).extend({

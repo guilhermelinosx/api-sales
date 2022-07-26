@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { celebrate, Joi, Segments } from 'celebrate'
 import { CustomerController } from '../controllers/CustomerController'
-import { isAuthenticated } from '@src/infra/server/middlewares/isAuthenticated'
+import { isAuthenticated } from '@src/server/middlewares/isAuthenticated'
 
 export const customersRouter = Router()
 const customerController = new CustomerController()

@@ -1,5 +1,5 @@
-import { AppError } from '@src/infra/errors/AppError'
-import { ProductsRepository } from '@src/infra/typeorm/repositories/ProductsRepository'
+import { AppError } from '@src/server/errors/AppError'
+import { ProductsRepository } from '@src/server/typeorm/repositories/ProductsRepository'
 import { IShowProduct } from '../domain/interfaces/IShowProduct'
 import { IProduct } from '../domain/models/IProduct'
 

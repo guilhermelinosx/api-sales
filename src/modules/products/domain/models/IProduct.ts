@@ -1,4 +1,4 @@
-import { OrderProducts } from '@src/infra/typeorm/entities/OrderProducts'
+import { OrderProducts } from '@src/server/typeorm/entities/OrderProducts'
 
 export interface IProduct {
 	id: string

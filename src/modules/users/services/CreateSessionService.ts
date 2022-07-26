@@ -1,8 +1,8 @@
-import { AppError } from '@src/infra/errors/AppError'
+import { AppError } from '@src/server/errors/AppError'
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import { User } from '../../../infra/typeorm/entities/User'
-import { UsersRepository } from '../../../infra/typeorm/repositories/UsersRepository'
+import { User } from '../../../server/typeorm/entities/User'
+import { UsersRepository } from '../../../server/typeorm/repositories/UsersRepository'
 import { ICreateSession } from '../domain/interfaces/ICreateSession'
 
 interface IReturn {

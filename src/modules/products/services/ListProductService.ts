@@ -1,4 +1,4 @@
-import { ProductsRepository } from '@src/infra/typeorm/repositories/ProductsRepository'
+import { ProductsRepository } from '@src/server/typeorm/repositories/ProductsRepository'
 import { IProduct } from '../domain/models/IProduct'
 
 export class ListProductService {

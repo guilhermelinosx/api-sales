@@ -1,7 +1,7 @@
 import { IUser } from '../domain/models/IUser'
 import { hash, compare } from 'bcryptjs'
-import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
-import { AppError } from '@src/infra/errors/AppError'
+import { UsersRepository } from '@src/server/typeorm/repositories/UsersRepository'
+import { AppError } from '@src/server/errors/AppError'
 import { IUpdateProfile } from '../domain/interfaces/IUpdateProfile'
 
 export class UpdateProfileService {

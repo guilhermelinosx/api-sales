@@ -16,3 +16,7 @@ routes.use('/password', passwordsRouter)
 routes.use('/profile', profilesRouter)
 routes.use('/customers', customersRouter)
 routes.use('/orders', ordersRouter)
+
+routes.get('/', (req, res) => {
+	res.send('api - sales')
+})

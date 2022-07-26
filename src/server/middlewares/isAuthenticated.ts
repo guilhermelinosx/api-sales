@@ -1,4 +1,4 @@
-import { AppError } from '@src/infra/errors/AppError'
+import { AppError } from '@src/server/errors/AppError'
 import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
 

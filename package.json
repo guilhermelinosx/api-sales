@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
-    "start:dev": "ts-node-dev  -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/infra/server/server.ts",
+    "dev": "ts-node-dev  -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "build": "tsc",
     "test": "jest"

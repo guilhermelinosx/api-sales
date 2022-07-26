@@ -1,6 +1,6 @@
-import { AppError } from '@src/infra/errors/AppError'
-import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
-import { UserTokensRepository } from '@src/infra/typeorm/repositories/UserTokensRepository'
+import { AppError } from '@src/server/errors/AppError'
+import { UsersRepository } from '@src/server/typeorm/repositories/UsersRepository'
+import { UserTokensRepository } from '@src/server/typeorm/repositories/UserTokensRepository'
 import path from 'path'
 import { ISendForgot } from '../domain/interfaces/IShowProfile'
 

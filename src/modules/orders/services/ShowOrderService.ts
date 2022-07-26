@@ -1,5 +1,5 @@
-import { AppError } from '@src/infra/errors/AppError'
-import { OrdersRepository } from '@src/infra/typeorm/repositories/OrdersRepository'
+import { AppError } from '@src/server/errors/AppError'
+import { OrdersRepository } from '@src/server/typeorm/repositories/OrdersRepository'
 import { IShowOrder } from '../domain/interfaces/IShowOrder'
 import { IOrder } from '../domain/models/IOrder'
 

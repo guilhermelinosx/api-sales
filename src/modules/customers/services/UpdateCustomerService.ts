@@ -1,5 +1,5 @@
-import { AppError } from '@src/infra/errors/AppError'
-import { CustomersRepository } from '@src/infra/typeorm/repositories/CustomersRepository'
+import { AppError } from '@src/server/errors/AppError'
+import { CustomersRepository } from '@src/server/typeorm/repositories/CustomersRepository'
 import { IUpdateCustomer } from '../domain/interfaces/IUpdateCustomer'
 import { ICustomer } from '../domain/models/ICustomer'
 

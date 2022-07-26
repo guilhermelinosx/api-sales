@@ -1,4 +1,4 @@
-import { UsersRepository } from '@src/infra/typeorm/repositories/UsersRepository'
+import { UsersRepository } from '@src/server/typeorm/repositories/UsersRepository'
 import { IUser } from '../domain/models/IUser'
 
 export class ListUserService {

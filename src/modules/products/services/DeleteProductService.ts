@@ -1,5 +1,5 @@
-import { AppError } from '@src/infra/errors/AppError'
-import { ProductsRepository } from '@src/infra/typeorm/repositories/ProductsRepository'
+import { AppError } from '@src/server/errors/AppError'
+import { ProductsRepository } from '@src/server/typeorm/repositories/ProductsRepository'
 import { IDeleteProduct } from '../domain/interfaces/IDeleteProduct'
 
 export class DeleteProductService {
