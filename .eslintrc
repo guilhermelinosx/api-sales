@@ -1,7 +1,6 @@
 {
 	"root": true,
 	"env": {
-		"es2021": true,
 		"node": true,
 		"jest": true
 	},
@@ -15,19 +14,20 @@
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": "latest",
-		"sourceType": "module"
+		"sourceType": "module",
+		"project": "tsconfig.json"
 	},
 	"plugins": [
 		"@typescript-eslint",
+		"@typescript-eslint/eslint-plugin",
 		"prettier"
 	],
 	"rules": {
+		"no-console": "warn",
 		"prettier/prettier": "error",
 		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
-		"@typescript-eslint/no-explicit-any": "off",
-		"@typescript-eslint/no-unused-vars": 0,
-		"@typescript-eslint/no-undef": 0
+		"@typescript-eslint/no-explicit-any": "off"
 	}
 }

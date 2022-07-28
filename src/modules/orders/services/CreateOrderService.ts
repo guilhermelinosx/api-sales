@@ -8,7 +8,7 @@ import { IOrder } from '../domain/models/IOrder'
 export class CreateOrderService {
 	public async execute({
 		customer_id,
-		products
+		products,
 	}: ICreateOrder): Promise<IOrder> {
 		const ordersRepository = OrdersRepository
 		const customersRepository = CustomersRepository
@@ -49,22 +49,22 @@ export class CreateOrderService {
 		const serializedProducts = products.map(product => ({
 			product_id: product.id,
 			quantity: product.quantity,
-			price: productsExists.filter(p => p.id === product.id)[0].price
+			price: productsExists.filter(p => p.id === product.id)[0].price,
 		}))
 
 		const order = ordersRepository.createOrder({
 			customer: customerExists,
-			products: serializedProducts
+			products: serializedProducts,
 		})
 
-		const { order_products } = order
+		const order_products = order
 
 		const updatedProductsQuantity = order_products.map(
 			(product: { product_id: string; quantity: number }) => ({
 				id: product.product_id,
 				quantity:
 					productsExists.filter(p => p.id === product.product_id)[0].quantity -
-					product.quantity
+					product.quantity,
 			})
 		)
 

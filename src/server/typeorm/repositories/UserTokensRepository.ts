@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { datasource } from '..'
+import { dataSource } from '..'
 import { UserToken } from '../entities/UserToken'
 
-export const UserTokensRepository = datasource.getRepository(UserToken).extend({
+export const UserTokensRepository = dataSource.getRepository(UserToken).extend({
 	async findByToken(token: string): Promise<UserToken | null> {
 		const userTokens = await this.findOneBy({ token })
 		return userTokens
@@ -12,5 +12,5 @@ export const UserTokensRepository = datasource.getRepository(UserToken).extend({
 		const userTokens = this.create({ user_id })
 		await this.save(userTokens)
 		return userTokens
-	}
+	},
 })

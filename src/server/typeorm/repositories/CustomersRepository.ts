@@ -1,7 +1,7 @@
-import { datasource } from '..'
+import { dataSource } from '..'
 import { Customer } from '../entities/Customer'
 
-export const CustomersRepository = datasource.getRepository(Customer).extend({
+export const CustomersRepository = dataSource.getRepository(Customer).extend({
 	async findById(id: string): Promise<Customer | null> {
 		const customers = await this.findOneBy({ id })
 		return customers
@@ -15,5 +15,5 @@ export const CustomersRepository = datasource.getRepository(Customer).extend({
 	async findByEmail(email: string): Promise<Customer | null> {
 		const customers = await this.findOneBy({ email })
 		return customers
-	}
+	},
 })

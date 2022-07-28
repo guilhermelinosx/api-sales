@@ -17,7 +17,7 @@ import { Customer } from './entities/Customer'
 import { Order } from './entities/Order'
 import { OrderProducts } from './entities/OrderProducts'
 
-export const datasource = new DataSource({
+export const dataSource = new DataSource({
 	type: 'postgres',
 	host: 'localhost',
 	port: 5432,
@@ -34,7 +34,7 @@ export const datasource = new DataSource({
 		AddCustomersIDtoOrders1657364996694,
 		CreateOrdersProduct1657365700190,
 		AddOrdersIDtoOrdersProducts1657365876838,
-		AddProductIDtoOrdersProducts1657366310333
+		AddProductIDtoOrdersProducts1657366310333,
 	],
-	entities: [Product, User, UserToken, Customer, Order, OrderProducts]
+	entities: [Product, User, UserToken, Customer, Order, OrderProducts],
 })

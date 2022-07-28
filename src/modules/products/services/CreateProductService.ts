@@ -7,7 +7,7 @@ export class CreateProductService {
 	public async execute({
 		name,
 		price,
-		quantity
+		quantity,
 	}: ICreateProduct): Promise<IProduct> {
 		const productsRepository = ProductsRepository
 
@@ -19,7 +19,7 @@ export class CreateProductService {
 		const product = productsRepository.create({
 			name,
 			price,
-			quantity
+			quantity,
 		})
 
 		await productsRepository.save(product)

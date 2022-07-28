@@ -1,8 +1,8 @@
 import { In } from 'typeorm'
-import { datasource } from '..'
+import { dataSource } from '..'
 import { Product } from '../entities/Product'
 
-export const ProductsRepository = datasource.getRepository(Product).extend({
+export const ProductsRepository = dataSource.getRepository(Product).extend({
 	async findById(id: string): Promise<Product | null> {
 		const products = await this.findOneBy({ id })
 		return products
@@ -18,9 +18,9 @@ export const ProductsRepository = datasource.getRepository(Product).extend({
 
 		const productsExists = await this.find({
 			where: {
-				id: In(productsIds)
-			}
+				id: In(productsIds),
+			},
 		})
 		return productsExists
-	}
+	},
 })

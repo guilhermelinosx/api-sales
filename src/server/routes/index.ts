@@ -18,5 +18,5 @@ routes.use('/customers', customersRouter)
 routes.use('/orders', ordersRouter)
 
 routes.get('/', (req, res) => {
-	res.send('api - sales')
+	return res.send('<h1 align="center">Hello Dev</h1>')
 })
